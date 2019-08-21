@@ -2,9 +2,7 @@ clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Cultur
 from Microsoft.Office.Interop import Excel
 from System.Runtime.InteropServices import Marshal
 
-
 path = r"C:\My Excel Files\Book1.xls"
-
 
 class Lst_Xls():
 	def __init__(self):
