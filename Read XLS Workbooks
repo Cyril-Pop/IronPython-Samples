@@ -28,8 +28,8 @@ class Lst_Xls():
 		self.first_flst = [x for x in lst_xls[0]]		
 		self.type_fidx = self.first_flst.index("Type")
 		ex.Workbooks.Close()
-    #other proper way to make sure that you really closed and released all COM objects 
-    #ex.ActiveWorkbook.Close(False)
+    		#other proper way to make sure that you really closed and released all COM objects 
+    		#ex.ActiveWorkbook.Close(False)
 		#Marshal.ReleaseComObject(xlWorksheet)
 		#Marshal.ReleaseComObject(xlWorkbook)
 		#Marshal.ReleaseComObject(xlApp)
