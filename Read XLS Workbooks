@@ -1,0 +1,35 @@
+clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
+from Microsoft.Office.Interop import Excel
+from System.Runtime.InteropServices import Marshal
+
+
+path = r"C:\My Excel Files\Book1.xls"
+
+
+class Lst_Xls():
+	def __init__(self):
+		ex = Excel.ApplicationClass()
+		ex.Visible = False
+		lst_xls = []
+		workbook = ex.Workbooks.Open(path)
+		ws = workbook.Worksheets[1]
+		rowCountF = sum( x is not None for x in ws.Columns[1].Value2) 
+		colCountF = sum( x is not None for x in ws.Rows[1].Value2)
+		
+		for i in range(1,rowCountF+1):
+			temp_lst = []
+			for j in range(1,colCountF+1):
+				try:
+					temp_lst.append(ws.Cells[i,j].Value2.ToString())
+				except:
+					temp_lst.append(ws.Cells[i,j].Value2)		
+			lst_xls.append(temp_lst)
+		self.datas = lst_xls
+		self.first_flst = [x for x in lst_xls[0]]		
+		self.type_fidx = self.first_flst.index("Type")
+		ex.Workbooks.Close()
+    #other proper way to make sure that you really closed and released all COM objects 
+    #ex.ActiveWorkbook.Close(False)
+		#Marshal.ReleaseComObject(xlWorksheet)
+		#Marshal.ReleaseComObject(xlWorkbook)
+		#Marshal.ReleaseComObject(xlApp)
