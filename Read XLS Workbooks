@@ -25,7 +25,8 @@ class Lst_Xls():
 					temp_lst.append(ws.Cells[i,j].Value2)		
 			lst_xls.append(temp_lst)
 		self.datas = lst_xls
-		self.first_flst = [x for x in lst_xls[0]]		
+		self.first_flst = [x for x in lst_xls[0]] # or lst_xls[0] 
+		#Get the specify index
 		self.type_fidx = self.first_flst.index("Type")
 		ex.Workbooks.Close()
     		#other proper way to make sure that you really closed and released all COM objects 
