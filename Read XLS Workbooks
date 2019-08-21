@@ -4,10 +4,10 @@ clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Cultur
 from Microsoft.Office.Interop import Excel
 from System.Runtime.InteropServices import Marshal
 
-path = r"C:\My Excel Files\Book1.xls"
+input = r"C:\My Excel Files\Book1.xls"
 
 class Lst_Xls():
-	def __init__(self):
+	def __init__(self, path):
 		ex = Excel.ApplicationClass()
 		ex.Visible = False
 		lst_xls = []
@@ -33,3 +33,5 @@ class Lst_Xls():
 		#Marshal.ReleaseComObject(xlWorksheet)
 		#Marshal.ReleaseComObject(xlWorkbook)
 		#Marshal.ReleaseComObject(xlApp)
+		
+obj_xl_lst = class Lst_Xls(input)		
