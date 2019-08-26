@@ -1,4 +1,5 @@
 #Written By CP
+#Written By CP
 
 import sys
 import clr
@@ -67,20 +68,39 @@ def doc_replace_text(source_filename, tokens, values):
 						missing # support right to left
 						)
 				except: pass
-				#Find and replace in TextBox
-				if _find == "PHASE EXE":
-					try:
-						for shape in document.Shapes:
-							initialText = shape.TextFrame
-							if initialText.HasText :
-								resultingText = initialText.TextRange.Text.Replace(_find, _replace)
-								shape.TextFrame.TextRange.Text = resultingText
-					except: pass
+				#Find and replace in TextBox(shapes)
+				try:	
+					for shape in document.Shapes:
+						initialText = shape.TextFrame
+						if initialText.HasText and _find == "PHASE EXE":
+							rangeobj = initialText.TextRange 
+							rangeobj.Find.Execute(
+							_find, # search text
+							True, # match case
+							missing, # match whole word
+							missing, # match wildcards
+							missing, # match sounds like
+							missing, # match all word forms
+							True, # forward?
+							Word.WdFindWrap.wdFindContinue, # wrap enum
+							missing, # format?
+							_replace, # replace with
+							replaceAll, # replace enum
+							missing, # match Kashida (arabic letters)
+							missing, # diatrics?
+							missing, # match other Arabic letters
+							missing # support right to left
+							)
+							#OTHER METHOD
+							#resultingText = initialText.TextRange.Text.Replace(_find, _replace)
+							#shape.TextFrame.TextRange.Text = resultingText
+				except: pass
 								
 		print source_filename + ": success"
-	       	            
+		pdf_path =  source_filename + ".pdf"  	            
 	
 		document.Save()
+		document.SaveAs2(pdf_path, Word.WdSaveFormat.wdFormatPDF)
 		document.Close()
 		document = None
 	
@@ -91,7 +111,11 @@ def doc_replace_text(source_filename, tokens, values):
 		# if error occurs anywhere in the process catch it
 		import traceback
 		errorReport = traceback.format_exc()
-		print errorReport	    
+		print errorReport
+		document.Close()
+		document = None
+		word_application.Quit()
+		word_application = None		
     
     
     
@@ -111,3 +135,4 @@ for (repertoire, sousRepertoires, fichiers) in walk(monRepertoire):
 		if file.endswith(".docx"):
 			filename = (os.path.join(repertoire, file))
 			doc_replace_text(filename, tokens, values) 
+
