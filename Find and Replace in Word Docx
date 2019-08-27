@@ -1,5 +1,5 @@
 #Written By CP
-#Written By CP
+
 
 import sys
 import clr
@@ -118,9 +118,7 @@ def doc_replace_text(source_filename, tokens, values):
 		word_application = None		
     
     
-    
-#source_filename = "C:\\template.doc"
-#destination_filename = "C:\\letter.doc"
+
 
 tokens = ["EXE", "PHASE EXE"] # etc...
 values = ["DOE", "PHASE DOE"]
@@ -129,7 +127,7 @@ values = ["DOE", "PHASE DOE"]
 word_application = Word.ApplicationClass()
 word_application.Quit()
 word_application = None
-monRepertoire = "C:\\Users\\poupincyril\\Documents\\Proposées"
+monRepertoire = "C:\\Users\\userName\\Documents\\Proposées"
 for (repertoire, sousRepertoires, fichiers) in walk(monRepertoire):
 	for file in fichiers:
 		if file.endswith(".docx"):
