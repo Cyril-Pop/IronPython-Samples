@@ -29,10 +29,9 @@ class Lst_Xls():
 		#Get the specify index
 		self.type_fidx = self.first_flst.index("Type")
 		ex.Workbooks.Close()
+		ex.Quit()
     		#other proper way to make sure that you really closed and released all COM objects 
-    		#ex.ActiveWorkbook.Close(False)
-		#Marshal.ReleaseComObject(xlWorksheet)
-		#Marshal.ReleaseComObject(xlWorkbook)
-		#Marshal.ReleaseComObject(xlApp)
+		Marshal.ReleaseComObject(workbook)
+		Marshal.ReleaseComObject(ex)
 		
 obj_xl_lst = class Lst_Xls(input)		
