@@ -13,7 +13,7 @@ from System.Runtime.InteropServices import Marshal
 xlDirecDown = System.Enum.Parse(Excel.XlDirection, "xlDown")
 xlDirecRight = System.Enum.Parse(Excel.XlDirection, "xlToRight")
 
-input = r"C:\My Excel Files\Book1.xls"
+input = r'C:\My Excel Files\Book1.xls'
 
 class Lst_Xls():
 	def __init__(self, path):
