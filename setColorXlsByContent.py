@@ -8,11 +8,8 @@ from System import Array
 from System.Collections.Generic import *
 
 clr.AddReference('System.Drawing')
-clr.AddReference('System.Windows.Forms')
 import System.Drawing
-import System.Windows.Forms
 from System.Drawing import *
-from System.Windows.Forms import *
 
 clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
 from Microsoft.Office.Interop import Excel
