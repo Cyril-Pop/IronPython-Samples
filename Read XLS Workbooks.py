@@ -52,4 +52,4 @@ class Lst_Xls():
 		Marshal.ReleaseComObject(workbook)
 		Marshal.ReleaseComObject(ex)
 		
-obj_xl_lst = class Lst_Xls(input)		
+obj_xl_lst = Lst_Xls(input)		
