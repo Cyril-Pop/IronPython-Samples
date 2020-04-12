@@ -1,3 +1,25 @@
+# coding: utf-8 
+import clr
+clr.AddReference('ProtoGeometry')
+from Autodesk.DesignScript.Geometry import *
+
+import System
+from System import Array
+from System.Collections.Generic import *
+
+clr.AddReference('System.Drawing')
+import System.Drawing
+from System.Drawing import *
+
+
+clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
+from Microsoft.Office.Interop import Excel
+from System.Runtime.InteropServices import Marshal
+
+xlDirecDown = System.Enum.Parse(Excel.XlDirection, "xlDown")
+xlDirecRight = System.Enum.Parse(Excel.XlDirection, "xlToRight")
+
+
 class ExcelUtils():
 	def __init__(self, expSettings, filepath):
 		expSettings[0:0] = [["category", "subCategory", "LayerName" ]]
