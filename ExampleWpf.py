@@ -88,8 +88,8 @@ try:
 	hello = HelloWorld(xaml)
 	print dir(hello)
 	Application().Run(hello.winLoad)
-	raw_input()
+	raw_input() #for debug in SharpDevelop	
 	
 except Exception as ex:
 	print ex
-	raw_input()	
+	raw_input() #for debug in SharpDevelop	
