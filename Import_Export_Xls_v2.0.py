@@ -70,6 +70,10 @@ class ExcelUtils():
 		self.first_flst = [x for x in self.datas [0]] 
 		ex.Workbooks.Close()
 		ex.Quit()
-    	#other proper way to make sure that you really closed and released all COM objects 
-		Marshal.ReleaseComObject(workbook)
-		Marshal.ReleaseComObject(ex)
+    		#other proper way to make sure that you really closed and released all COM objects 
+		if workbook is not None:
+			Marshal.ReleaseComObject(workbook)
+		if ex is not None:
+			Marshal.ReleaseComObject(ex)     
+		workbook = None        
+		ex = None
