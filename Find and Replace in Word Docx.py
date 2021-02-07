@@ -29,8 +29,8 @@ def doc_replace_text(source_filename, tokens, values):
 		document = word_application.Documents.Open(source_filename)
 		#Find and Replace Process
 		for _find, _replace in zip(tokens,values):
-			for r in document.StoryRanges:
-				r.Find.Execute(
+			for myStoryRange in document.StoryRanges:
+				myStoryRange.Find.Execute(
 				_find, # search text
 				True, # match case
 				missing, # match whole word
@@ -48,8 +48,8 @@ def doc_replace_text(source_filename, tokens, values):
 				missing # support right to left
 				)
 				try:
-					while StoryRanges.NextStoryRange != None:
-						q = StoryRanges.NextStoryRange 
+					while myStoryRange.NextStoryRange is not None:
+						q = myStoryRange.NextStoryRange 
 						q.Find.Execute(
 						_find, # search text
 						True, # match case
