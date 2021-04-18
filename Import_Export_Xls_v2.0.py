@@ -18,6 +18,7 @@ from System.Runtime.InteropServices import Marshal
 
 xlDirecDown = System.Enum.Parse(Excel.XlDirection, "xlDown")
 xlDirecRight = System.Enum.Parse(Excel.XlDirection, "xlToRight")
+xlDirecUp = System.Enum.Parse(Excel.XlDirection, "xlUp")
 
 
 class ExcelUtils():
@@ -60,6 +61,8 @@ class ExcelUtils():
 		ws = workbook.Worksheets[1]
 		##get number of Rows not empty ##
 		rowCountF = ws.Columns[1].End(xlDirecDown).Row
+		# other method if column A is empty
+		#rowCountF = ws.Range("B65536").End(xlDirecUp).Row
 		##get number of Coloun not empty ##
 		colCountF = ws.Rows[1].End(xlDirecRight).Column
 		self.fullrange = ws.Range[ws.Cells(1, 1), ws.Cells(rowCountF, colCountF)]
