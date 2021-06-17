@@ -23,16 +23,15 @@ class Lst_Xls():
 		workbook = ex.Workbooks.Open(path)
 		ws = workbook.Worksheets[1]
 		
-		##get number of Rows not empty ##
-		rowCountF = ws.Columns[1].End(xlDirecDown).Row
-		#or
-		#rowCountF = sum( x is not None for x in ws.Columns[1].Value2)
-		#
-		#
+		rowCountF = max(ws.Range(i).End(xlDirecUp).Row for i in ["A65536", "B65536", "C65536", "D65536", "E65536", "F65536", "G65536", "H65536"])
+		# other method if column A is empty
+		# rowCountF = ws.Range("B65536").End(xlDirecUp).Row
+		# rowCountF = ws.Columns[1].End(xlDirecDown).Row
 		##get number of Coloun not empty ##
-		colCountF = ws.Rows[1].End(xlDirecRight).Column
-		#or
-		#colCountF = sum( x is not None for x in ws.Rows[1].Value2)
+		colCountF = max(ws.Range(i).End(xlDirecLeft).Column for i in ["ZZ1", "ZZ2", "ZZ3", "ZZ4", "ZZ5", "ZZ6", "ZZ7", "ZZ8", "ZZ9"])
+		# other methods
+		#colCountF = ws.Range("ZZ9").End(xlDirecLeft).Column
+		# colCountF = ws.Rows[1].End(xlDirecRight).Column
 		
 		for i in range(1,rowCountF+1):
 			temp_lst = []
