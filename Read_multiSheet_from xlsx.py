@@ -24,7 +24,7 @@ xlDirecLeft = System.Enum.Parse(Excel.XlDirection, "xlToLeft")
 class ExcelUtils():
 	def __init__(self, filepath, nameSheets):
 		self.filepath = filepath
-		self.nameSheets = nameSheets
+		self.nameSheets = nameSheets if hasattr(nameSheets, '__iter__') else [nameSheets]
 		self.ex = Excel.ApplicationClass()
 		self.ex.Visible = False
 		self.workbook = self.ex.Workbooks.Open(self.filepath)
