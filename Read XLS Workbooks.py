@@ -12,6 +12,7 @@ from System.Runtime.InteropServices import Marshal
 
 xlDirecDown = System.Enum.Parse(Excel.XlDirection, "xlDown")
 xlDirecRight = System.Enum.Parse(Excel.XlDirection, "xlToRight")
+xlDirecLeft = System.Enum.Parse(Excel.XlDirection, "xlToLeft")
 
 input = r'C:\My Excel Files\Book1.xls'
 
