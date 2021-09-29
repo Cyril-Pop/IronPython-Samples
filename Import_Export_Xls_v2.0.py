@@ -23,9 +23,8 @@ xlDirecLeft = System.Enum.Parse(Excel.XlDirection, "xlToLeft")
 
 
 class ExcelUtils():
-	def __init__(self, expSettings, filepath):
-		expSettings[0:0] = [["category", "subCategory", "LayerName" ]]
-		self.expSettings = expSettings
+	def __init__(self, lstData, filepath):
+		self.lstData = lstData
 		self.filepath = filepath
 
 		print self.filepath
@@ -39,11 +38,11 @@ class ExcelUtils():
 		workbook = ex.Workbooks.Add()
 		workbook.SaveAs(self.filepath)
 		ws = workbook.Worksheets[1]	
-		nbr_row = len(self.expSettings)
-		nbr_colum = len(self.expSettings[0])
+		nbr_row = len(self.lstData)
+		nbr_colum = len(self.lstData[0])
 		xlrange  = ws.Range[ws.Cells(1, 1), ws.Cells(nbr_row, nbr_colum)]
 		a = Array.CreateInstance(object, nbr_row, nbr_colum)
-		for indexR, row in enumerate(self.expSettings):
+		for indexR, row in enumerate(self.lstData):
 			for indexC , value in  enumerate(row):
 				a[indexR,indexC] = value
 				
