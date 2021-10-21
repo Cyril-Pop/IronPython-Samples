@@ -51,6 +51,12 @@ class ExcelUtils():
 		used_range = ws.UsedRange	
 		for column in used_range.Columns:
 			column.AutoFit()
+		# apply style
+		missing = System.Type.Missing
+		try:
+			currentWs.ListObjects.Add(Excel.XlListObjectSourceType.xlSrcRange, xlrange, missing, Excel.XlYesNoGuess.xlGuess, missing).Name = "WFTableStyle"
+			currentWs.ListObjects["WFTableStyle"].TableStyle = "TableStyleMedium6"
+		except:pass
 			
 			
 	def importXls(self):
