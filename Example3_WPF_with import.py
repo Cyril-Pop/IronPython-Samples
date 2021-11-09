@@ -16,7 +16,7 @@ class HelloWorld(Window):
 		self._xaml = xaml	
 		xr = XmlReader.Create(StringReader(self._xaml))
 		self.winLoad = wpf.LoadComponent(self, xr)
-		self._comboBox = self.winLoad.FindName('pulldown')
+		#self._comboBox = self.winLoad.FindName('_comboBox') # not necessary with wpf IronPython Module Wpf
 		for x in range(1,10):
 			self._comboBox.Items.Add("Item "+str(x))
 		
@@ -38,7 +38,7 @@ xaml = """
        <Grid>
         <Button x:Name="btnOkay" Content="OK" HorizontalAlignment="Left" Margin="127,239,0,0" VerticalAlignment="Top" Width="75" Click="okButtonPressed"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="207,239,0,0" VerticalAlignment="Top" Width="75" Click="CnlButtonPressed"/>
-        <ComboBox x:Name="pulldown" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="pulldown_SelectionChanged"/>
+        <ComboBox x:Name="_comboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="pulldown_SelectionChanged"/>
     </Grid>
 </Window> """
 
