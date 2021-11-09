@@ -16,10 +16,9 @@ class HelloWorld(Window):
 		self._xaml = xaml	
 		xr = XmlReader.Create(StringReader(self._xaml))
 		self.winLoad = wpf.LoadComponent(self, xr)
-		self._stakpanel = self.winLoad.FindName('stackPanel')
+		#self._stakpanel = self.winLoad.FindName('stackPanel') # not necessary with IronPython Wpf module
 		
 		## Other Way
-		#self._button = self.winLoad.FindName('button')
 		#self._button.Click += self.onClick
 		
 	def onClick(self, sender, e):
@@ -59,7 +58,7 @@ xaml = """
 			Margin="101.6,42.4,0,0"
 			Width="75.2"
 			Height="23.2"
-			x:Name="button"
+			x:Name="_button"
 			Click="onClick" />
 		<StackPanel
 			Grid.Column="0"
@@ -69,7 +68,7 @@ xaml = """
 			Margin="24.8,84.8,0,0"
 			Width="234.4"
 			Height="161.6"
-			x:Name="stackPanel" />
+			x:Name="_stakpanel" />
 	</Grid>
 </Window>"""
 
