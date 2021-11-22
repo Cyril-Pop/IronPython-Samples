@@ -13,6 +13,12 @@ from System.Drawing import *
 
 
 clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
+"""
+try:
+	clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
+except:
+	clr.AddReference('Microsoft.Office.Interop.Excel')
+"""
 from Microsoft.Office.Interop import Excel
 from System.Runtime.InteropServices import Marshal
 
