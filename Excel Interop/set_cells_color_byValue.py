@@ -72,9 +72,9 @@ class Lst_Xls():
 
 			
 
-xlspath = r'‪C:\Users\sneep\Downloads\Audit (1).xlsx' #IN[0]	
+xlspath = r'‪C:\Users\myxlsFile.xls' #IN[0]	
 lstValue = ["05001", 12011, "20001", "40003", 05511 ] #IN[1]
-sheetName = "Audit" #IN[2]
+sheetName = "Feuil1" #IN[2]
 
 obj_xl_lst = Lst_Xls(xlspath, lstValue, sheetName)
 obj_xl_lst.setCellColor()
