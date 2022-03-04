@@ -50,7 +50,7 @@ class Lst_Xls():
 		
 				
 	def setCellColor(self):	
-		# strRgb = "128,0,64"
+		strRgb = "128,0,64"
 		for row in self.fullrange.Rows:
 			rangerow = row.Value2
 			set_rangeRow = set()
@@ -60,8 +60,8 @@ class Lst_Xls():
 				except:
 					pass
 			print(set_rangeRow)
-			checkSetA = set_rangeRow & self.setValue
-			if len(checkSetA) > 0:
+			checkSetAB = set_rangeRow & self.setValue
+			if len(checkSetAB) > 0:
 				for i in range(row.Columns.Count):
 					cellRg = row.Cells[1, i + 1]
 					value = cellRg.Value2
