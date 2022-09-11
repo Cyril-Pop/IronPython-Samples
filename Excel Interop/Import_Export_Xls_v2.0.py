@@ -60,8 +60,9 @@ class ExcelUtils():
 		# apply style
 		missing = System.Type.Missing
 		try:
-			currentWs.ListObjects.Add(Excel.XlListObjectSourceType.xlSrcRange, xlrange, missing, Excel.XlYesNoGuess.xlGuess, missing).Name = "WFTableStyle"
-			currentWs.ListObjects["WFTableStyle"].TableStyle = "TableStyleMedium6"
+			new_table = ws.ListObjects.Add(Excel.XlListObjectSourceType.xlSrcRange, xlrange, missing, Excel.XlYesNoGuess.xlGuess, missing)
+			new_table.Name = "WFTableStyle"
+			new_table.TableStyle = "TableStyleMedium6"
 		except:pass
 			
 			
