@@ -79,9 +79,16 @@ class ExcelUtils():
 		# rowCountF = ws.Columns[1].End(xlDirecDown).Row
 		##get number of Coloun not empty ##
 		colCountF = max(ws.Range(i).End(xlDirecLeft).Column for i in ["ZZ1", "ZZ2", "ZZ3", "ZZ4", "ZZ5", "ZZ6", "ZZ7", "ZZ8", "ZZ9"])
-		# other methods
-		#colCountF = ws.Range("ZZ9").End(xlDirecLeft).Column
+		# OTHER METHODS
+		# other method 1
+		# colCountF = ws.Range("ZZ9").End(xlDirecLeft).Column
 		# colCountF = ws.Rows[1].End(xlDirecRight).Column
+		# other  method 2 maybe the best
+		# last = ws.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, System.Type.Missing)
+		# usedrange = ws.Range["A1", last]
+		# rowCountF = last.Row
+		# colCountF = last.Column
+		#
 		self.fullrange = ws.Range[ws.Cells(1, 1), ws.Cells(rowCountF, colCountF)]
 		self.fullvalue = list(self.fullrange.Value2)
 		#split list into sublist with number of colum
