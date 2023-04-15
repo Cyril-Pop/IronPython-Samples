@@ -1,8 +1,10 @@
+# update 15/04/2023 for ipy3
 import clr
 clr.AddReference('ProtoGeometry')
 from Autodesk.DesignScript.Geometry import *
 
 import System
+clr.AddReference("System.Numerics")
 from System import Array
 from System.Collections.Generic import *
 
@@ -84,7 +86,7 @@ class ExcelUtils():
 		a = Array.CreateInstance(object, nbr_row, nbr_colum)
 		for indexR, row in enumerate(array_data):
 			for indexC , value in  enumerate(row):
-				a[indexR,indexC] = value
+				a[indexR,indexC] = System.Int32(value) if isinstance(value, System.Numerics.BigInteger) else value
 				
 		#copy Array in range			
 		xlrange.Value2 = a		
