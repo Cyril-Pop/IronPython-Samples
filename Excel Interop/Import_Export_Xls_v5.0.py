@@ -24,7 +24,7 @@ except Exception as ex:
         clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
         from Microsoft.Office.Interop import Excel
     except Exception as ex:
-        Excel = None    
+        Excel = typelib.Excel  
 	
 """
 try:
@@ -35,11 +35,18 @@ except:
 # from Microsoft.Office.Interop import Excel
 from System.Runtime.InteropServices import Marshal
 
-xlDirecDown = System.Enum.Parse(Excel.XlDirection, "xlDown")
-xlDirecRight = System.Enum.Parse(Excel.XlDirection, "xlToRight")
-xlDirecUp = System.Enum.Parse(Excel.XlDirection, "xlUp")
-xlDirecLeft = System.Enum.Parse(Excel.XlDirection, "xlToLeft")
-
+# method from Interrop dll GAC
+try:
+	xlDirecDown = System.Enum.Parse(Excel.XlDirection, "xlDown")
+	xlDirecRight = System.Enum.Parse(Excel.XlDirection, "xlToRight")
+	xlDirecUp = System.Enum.Parse(Excel.XlDirection, "xlUp")
+	xlDirecLeft = System.Enum.Parse(Excel.XlDirection, "xlToLeft")
+# method from Microsoft.Scripting.ComInterop.ComTypeLibInfo
+except:
+	xlDirecDown = Excel.XlDirection.xlDown
+	xlDirecRight = Excel.XlDirection.xlToRight
+	xlDirecUp = Excel.XlDirection.xlUp
+	xlDirecLeft = Excel.XlDirection.xlToLeft
 
 class ExcelUtils():	
 	@staticmethod
