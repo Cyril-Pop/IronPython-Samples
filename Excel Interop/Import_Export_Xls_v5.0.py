@@ -90,10 +90,7 @@ class ExcelUtils():
 		:return: None
 		:rtype: None
 		"""
-		if Excel is not None:
-			ex = Excel.ApplicationClass()
-		else:
-			ex = System.Activator.CreateInstance(System.Type.GetTypeFromProgID("Excel.Application", True))
+		ex = Excel.ApplicationClass()
 		#
 		ex.Visible = True
 		ex.DisplayAlerts = False
@@ -143,10 +140,7 @@ class ExcelUtils():
 		datas = None
 		error = None
 		#
-		if Excel is not None:
-			ex = Excel.ApplicationClass()
-		else:
-			ex = System.Activator.CreateInstance(System.Type.GetTypeFromProgID("Excel.Application", True))
+		ex = Excel.ApplicationClass()
 		#
 		ex.Visible = False
 		lst_xls = []
