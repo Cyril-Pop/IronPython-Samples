@@ -18,15 +18,21 @@ from System.Data import *
 
 try:
     clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
+    from Microsoft.Office.Interop import Excel
 except Exception as ex:
-    clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
+    try:
+        clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
+        from Microsoft.Office.Interop import Excel
+    except Exception as ex:
+        Excel = None    
+	
 """
 try:
 	clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
 except:
 	clr.AddReference('Microsoft.Office.Interop.Excel')
 """
-from Microsoft.Office.Interop import Excel
+# from Microsoft.Office.Interop import Excel
 from System.Runtime.InteropServices import Marshal
 
 xlDirecDown = System.Enum.Parse(Excel.XlDirection, "xlDown")
@@ -77,7 +83,11 @@ class ExcelUtils():
 		:return: None
 		:rtype: None
 		"""
-		ex = Excel.ApplicationClass()
+		if Excel is not None:
+			ex = Excel.ApplicationClass()
+		else:
+			ex = System.Activator.CreateInstance(System.Type.GetTypeFromProgID("Excel.Application", True))
+		#
 		ex.Visible = True
 		ex.DisplayAlerts = False
 		workbook = ex.Workbooks.Add()
@@ -126,7 +136,11 @@ class ExcelUtils():
 		datas = None
 		error = None
 		#
-		ex = Excel.ApplicationClass()
+		if Excel is not None:
+			ex = Excel.ApplicationClass()
+		else:
+			ex = System.Activator.CreateInstance(System.Type.GetTypeFromProgID("Excel.Application", True))
+		#
 		ex.Visible = False
 		lst_xls = []
 		try:
