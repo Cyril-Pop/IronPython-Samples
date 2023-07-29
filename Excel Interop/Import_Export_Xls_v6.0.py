@@ -64,7 +64,7 @@ class ExcelUtils():
 			dataTable.Columns.Add(item)
 		# add rows
 		for sublst_values in lstdata[1:]:
-			a = Array.CreateInstance(System.Object, len(sublst_values))
+			a = Array.CreateInstance(System.Object, System.Int32(len(sublst_values)))
 			for i, val in enumerate(sublst_values):
 				a[i] = val
 			dataTable.Rows.Add(*a)
@@ -94,7 +94,7 @@ class ExcelUtils():
 		nbr_row = len(array_data)
 		nbr_colum = len(array_data[0])
 		xlrange  = ws.Range[ws.Cells(1, 1), ws.Cells(nbr_row, nbr_colum)]
-		a = Array.CreateInstance(object, nbr_row, nbr_colum)
+		a = Array.CreateInstance(System.Object, System.Int32(nbr_row), System.Int32(nbr_colum))
 		for indexR, row in enumerate(array_data):
 			for indexC , value in  enumerate(row):
 				a[indexR,indexC] = System.Int32(value) if isinstance(value, System.Numerics.BigInteger) else value
