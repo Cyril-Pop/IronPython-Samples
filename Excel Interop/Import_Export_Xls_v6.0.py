@@ -15,16 +15,6 @@ clr.AddReference('System.Data')
 from System.Data import *
 
 
-# try:
-#     clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
-#     from Microsoft.Office.Interop import Excel
-# except Exception as ex:
-#     try:
-#         clr.AddReferenceByName('Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c' )
-#         from Microsoft.Office.Interop import Excel
-#     except Exception as ex:
-#         Excel = None
-
 from System.Runtime.InteropServices import Marshal
 # lst Enum Values
 class ExcelEnum:
@@ -77,7 +67,7 @@ class ExcelUtils():
 			a = Array.CreateInstance(System.Object, len(sublst_values))
 			for i, val in enumerate(sublst_values):
 				a[i] = val
-			dataTable.Rows.Add(a)
+			dataTable.Rows.Add(*a)
 		return dataTable
 		
 		
