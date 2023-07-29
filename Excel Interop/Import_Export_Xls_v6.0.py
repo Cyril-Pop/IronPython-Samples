@@ -28,6 +28,9 @@ from System.Data import *
 from System.Runtime.InteropServices import Marshal
 # lst Enum Values
 class ExcelEnum:
+    """
+    values Enum from API Interop Mircrosoft Doc , to avoid import lib in clr for Enum 
+    """
     XlDirection_xlDown = -4121	
     XlDirection_xlToLeft = -4159	
     XlDirection_xlToRight =	-4161	
@@ -47,18 +50,6 @@ class ExcelEnum:
     XlCellType_xlCellTypeSameValidation = -4175
     XlCellType_xlCellTypeVisible = 12
 
-# # method from Interrop dll GAC
-# try:
-# 	xlDirecDown = System.Enum.Parse(Excel.XlDirection, "xlDown")
-# 	xlDirecRight = System.Enum.Parse(Excel.XlDirection, "xlToRight")
-# 	xlDirecUp = System.Enum.Parse(Excel.XlDirection, "xlUp")
-# 	xlDirecLeft = System.Enum.Parse(Excel.XlDirection, "xlToLeft")
-# # method from Microsoft.Scripting.ComInterop.ComTypeLibInfo
-# except:
-# 	xlDirecDown = Excel.XlDirection.xlDown
-# 	xlDirecRight = Excel.XlDirection.xlToRight
-# 	xlDirecUp = Excel.XlDirection.xlUp
-# 	xlDirecLeft = Excel.XlDirection.xlToLeft
 
 class ExcelUtils():	
 	@staticmethod
@@ -76,8 +67,8 @@ class ExcelUtils():
 		return arrayRows
 		
 	@staticmethod
-	def ConvertArrayToDataTable(lstdata):
-		dataTable = DataTable()
+	def ConvertArrayToDataTable(lstdata, tableName=""):
+		dataTable = DataTable(tableName)
 		# create columns
 		for idx, item in enumerate(lstdata[0]):
 			dataTable.Columns.Add(item)
@@ -202,7 +193,7 @@ class ExcelUtils():
 			datas = list(fullvalue[i:i+n] for i in range(0, len(fullvalue ), n))
 			# 
 			# convert to DataTable
-			dt = ExcelUtils.ConvertArrayToDataTable(datas)
+			dt = ExcelUtils.ConvertArrayToDataTable(datas, ws.Name)
 			# if lst_ColumnName is not empty remove other column by name
 			if len(lst_ColumnName) > 0:
 				# convert to DataView
