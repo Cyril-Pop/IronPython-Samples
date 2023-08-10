@@ -39,6 +39,8 @@ class ExcelEnum:
     XlCellType_xlCellTypeSameFormatConditions = -4173
     XlCellType_xlCellTypeSameValidation = -4175
     XlCellType_xlCellTypeVisible = 12
+    XlSheetType_xlChart = -4109
+    XlSheetType_xlWorksheet = -4167
 
 
 class ExcelUtils():	
