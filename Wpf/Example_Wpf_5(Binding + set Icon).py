@@ -108,7 +108,11 @@ string_xaml = '''
 				<DataTemplate>
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<Label Name="labelFamily" VerticalAlignment="Center"  Margin="0" Content="{Binding listViewFamilies}" Visibility="Hidden" />
-					<CheckBox Name="familyCheck" VerticalAlignment="Center" Margin="0,0,0,0" Content="{Binding Path=Name}" IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}" />
+					<CheckBox Name="familyCheck" VerticalAlignment="Center" Margin="0,0,0,0" IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}" >
+					       <CheckBox.Content>
+							<TextBlock Text="{Binding Name}"></TextBlock>
+						</CheckBox.Content>
+      					</CheckBox>
 				</StackPanel>
 				</DataTemplate>
 			</ListView.ItemTemplate>
