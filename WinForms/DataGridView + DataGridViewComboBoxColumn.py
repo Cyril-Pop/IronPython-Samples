@@ -107,6 +107,7 @@ class FormSetWkset2(Form):
         self._dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11
         self._dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right
         self._dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        self._dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells      
         self._dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter
         self._dataGridView1.AllowUserToAddRows = False
         #
