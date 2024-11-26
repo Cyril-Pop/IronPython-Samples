@@ -36,6 +36,7 @@ sdkNumber = int(app.VersionNumber)
   
 class FormSetWkset2(Form):
     def __init__(self, lst_elems, lst_wkset):
+        # super().__init__() # for python3
         self._lst_wkset = lst_wkset
         self._lst_elems = lst_elems
         self._set_elemTypeId = set(x.GetTypeId() for x in lst_elems)
@@ -177,8 +178,8 @@ class FormSetWkset2(Form):
             if elem_symbol is not None and wkset_name is not None:
                 # search element in DataTable
                 strDataExpression = "[Name] = '" + wkset_name + "'"
-                filterP = System.Predicate[System.Object](lambda x : x is not None)
-                dtRowA = System.Array.Find(self._tableDataWkset.Select(strDataExpression), filterP)
+                filterP = System.Predicate[DataRow](lambda x : x is not None)
+                dtRowA = System.Array.Find[DataRow](self._tableDataWkset.Select(strDataExpression), filterP)
                 wkset = dtRowA["Workset"]
                 # remove if None
                 if elem_symbol is not None :
